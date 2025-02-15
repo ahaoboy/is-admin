@@ -1,5 +1,5 @@
 {
-  "name": "is-admin",
+  "name": "@easy-install/is-admin",
   "version": "0.1.0",
   "description": "is-admin",
   "types": "dist/index.d.ts",
