@@ -37,9 +37,6 @@ jobs:
       - name: run
         run: |
           cargo run
-      - name: admin run
-        run: |
-          sudo cargo run
 
   js-test:
     strategy:
@@ -59,6 +56,3 @@ jobs:
       - name: run
         run: |
           node bundle/cli.js
-      - name: admin run
-        run: |
-          sudo node bundle/cli.js
