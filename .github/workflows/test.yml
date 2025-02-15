@@ -17,11 +17,11 @@ jobs:
     strategy:
       matrix:
         os: [
-            ubuntu-24.04,
-            windows-latest,
-            macos-latest,
-            macos-13,
-          ]
+          ubuntu-24.04,
+          windows-latest,
+          macos-14,
+          macos-13,
+        ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v3
@@ -34,3 +34,31 @@ jobs:
       - name: cargo run
         run: |
           cargo run
+      - name: run
+        run: |
+          cargo run
+      - name: admin run
+        run: |
+          sudo cargo run
+
+  js-test:
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, windows-latest, macos-14, macos-13]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: build
+        run: |
+          pnpm install
+          pnpm run build
+      - name: run
+        run: |
+          node bundle/cli.js
+      - name: admin run
+        run: |
+          sudo node bundle/cli.js
