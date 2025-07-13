@@ -1,6 +1,6 @@
 #[cfg(windows)]
 #[link(name = "shell32")]
-extern "system" {
+unsafe extern "system" {
     fn IsUserAnAdmin() -> bool;
 }
 
