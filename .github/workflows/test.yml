@@ -26,17 +26,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v4
-      - name: Install latest nightly
-        uses: actions-rs/toolchain@v1
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
-          toolchain: nightly
-          override: true
+          components: rustfmt,clippy
+          rustflags: "-A warnings"
+          toolchain: "stable"
+
       - name: cargo run
         run: |
-          cargo run
-      - name: run
-        run: |
-          cargo run
+          cargo run -q
 
   js-test:
     strategy:
